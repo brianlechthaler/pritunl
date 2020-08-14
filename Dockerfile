@@ -1,4 +1,4 @@
-FROM centos:8
+FROM centos:7
 ENV PRITUNL_DIR=/opt/pritunl 
 ENV VENVCMD=". /opt/pritunl/venv/bin/activate"
 RUN echo "export GOPATH=\$HOME/go" >> $HOME/.bashrc
@@ -6,7 +6,8 @@ ADD . $PRITUNL_DIR/git
 
 #YUM package manager dependencies
 RUN yum install -y epel-release
-RUN yum install -y virtualenv python2 gcc-c++ bridge-utils openvpn psmisc net-tools python2-devel python2-pip golang bzr
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum install -y virtualenv python2 gcc-c++ bridge-utils openvpn psmisc net-tools python-devel python-pip golang bzr
 
 #Golang Dependencies
 RUN go get -u github.com/pritunl/pritunl-dns
