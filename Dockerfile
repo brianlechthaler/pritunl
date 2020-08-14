@@ -1,4 +1,4 @@
-FROM centos:8
+FROM centos:7
 ENV PRITUNL_DIR=/opt/pritunl 
 ENV VENVCMD=". /opt/pritunl/venv/bin/activate"
 RUN echo "export GOPATH=\$HOME/go" >> $HOME/.bashrc
